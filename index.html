@@ -46,64 +46,64 @@
             <label for="toggle">Mark as read:</label>
             <input type="checkbox" name="toggle" id="toggle" />
           </div>
-          <div class="card read">
-            <button class="remove">x</button>
-            <h3 class="book-title">A Game of Thrones</h3>
-            <p class="author">By: George R.R. Martin</p>
-            <p class="pages">Number of pages: 586</p>
-            <p class="genre">Genre: Fantasy</p>
-            <p class="language">Language: English</p>
-            <p class="published">Published:1 July 1996</p>
-            <label for="toggle">Mark as read:</label>
-            <input type="checkbox" name="toggle" id="toggle" />
-          </div>
-          <div class="card unread">
-            <button class="remove">x</button>
-            <h3 class="book-title">A Game of Thrones</h3>
-            <p class="author">By: George R.R. Martin</p>
-            <p class="pages">Number of pages: 586</p>
-            <p class="genre">Genre: Fantasy</p>
-            <p class="language">Language: English</p>
-            <p class="published">Published:1 July 1996</p>
-            <label for="toggle">Mark as read:</label>
-            <input type="checkbox" name="toggle" id="toggle" />
-          </div>
         </div>
-        <form action="example.html">
-          <button class="form-close-button">x</button>
-          <h4 class="form-title">Add a book</h4>
-          <label for="new-book-title">Book title* </label>
-          <input type="text" id="new-book-title" placeholder="Title" />
-
-          <label for="new-book-author">Book author*</label>
-          <input type="text" id="new-book-author" placeholder="Author" />
-          <label for="new-book-pages">Number of pages*</label>
-          <input
-            type="number"
-            id="new-book-pages"
-            placeholder="Number of pages"
-          />
-          <label for="new-book-publishing-date">Publishing Date*</label>
-          <input
-            type="date"
-            name="new-book-publishing date"
-            id="new-book-publishing-date"
-          />
-          <label for="new-book-read-status">Have your read this book?</label>
-          <select name="new-book-read-status" id="new-book-read-status">
-            <option value="Have you read this book already?">
-              Have you read this book already?
-            </option>
-            <option value="Yes">Yes, I've already read this book.</option>
-            <option value="No">No, it's still on my reading list.</option>
-          </select>
-          <div class="form-buttons">
-            <button class="form-add-book-button" type="submit">Add book</button>
-            <button class="form-clear-fields-button" type="reset">
-              Clear fields
-            </button>
-          </div>
-        </form>
+        <dialog class="modal">
+          <form class="add-book-form" method="dialog" action="example.html">
+            <button class="form-close-button">x</button>
+            <h4 class="form-title">Add a book</h4>
+            <label for="new-book-title">Book title* </label>
+            <input
+              type="text"
+              id="new-book-title"
+              placeholder="Title"
+              value="titel"
+            />
+            <label for="new-book-author">Book author*</label>
+            <input
+              type="text"
+              id="new-book-author"
+              placeholder="Author"
+              value="schrijver"
+            />
+            <label for="new-book-pages">Number of pages*</label>
+            <input
+              type="number"
+              id="new-book-pages"
+              placeholder="Number of pages"
+              value="500"
+            />
+            <label for="new-book-genre">Genre* </label>
+            <input
+              type="text"
+              id="new-book-genre"
+              placeholder="Genre"
+              value="Roman"
+            />
+            <label for="new-book-publishing-date">Publishing Date*</label>
+            <input
+              type="date"
+              name="new-book-publishing-date"
+              id="new-book-publishing-date"
+              value="1988-12-02"
+            />
+            <label for="new-book-read-status">Have your read this book?</label>
+            <select name="new-book-read-status" id="new-book-read-status">
+              <option value="Have you read this book already?">
+                Have you read this book already?
+              </option>
+              <option value="Yes">Yes, I've already read this book.</option>
+              <option value="No">No, it's still on my reading list.</option>
+            </select>
+            <div class="form-buttons">
+              <button class="form-add-book-button" type="submit">
+                Add book
+              </button>
+              <button class="form-clear-fields-button" type="reset">
+                Clear fields
+              </button>
+            </div>
+          </form>
+        </dialog>
       </main>
       <footer><p class="footer">The Odin Project - bookshelf</p></footer>
     </div>

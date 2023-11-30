@@ -6,6 +6,7 @@
 
 body {
   width: 100vw;
+  min-height: 100vh;
   text-align: center;
 
   display: flex;
@@ -17,7 +18,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width: 70vw;
-  height: 100%;
+  min-height: 100vh;
 
   border: 2px solid green;
 }
@@ -42,7 +43,6 @@ header {
 }
 
 table {
-  border: 1px solid blue;
   padding: 5px 75px 5px 5px;
 }
 
@@ -126,16 +126,12 @@ FORM
 ******************************/
 
 form {
-  display: none;
   width: 50%;
   position: relative;
-
-  border: 10px solid green;
 }
 
 label {
   display: block;
-  border: 2px solid blue;
 }
 
 input {
