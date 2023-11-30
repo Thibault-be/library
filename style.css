@@ -120,3 +120,33 @@ footer {
 /*****************************
 END OF FOOTER
 ******************************/
+
+/*****************************
+FORM
+******************************/
+
+form {
+  display: none;
+  width: 50%;
+  position: relative;
+
+  border: 10px solid green;
+}
+
+label {
+  display: block;
+  border: 2px solid blue;
+}
+
+input {
+  display: inline-block;
+}
+
+form > button {
+  display: inline-block;
+}
+
+.form-close-button {
+  position: absolute;
+  right: 0;
+}
