@@ -104,7 +104,8 @@ function createCard(book) {
   readCheckbox.name = `toggle-${book.title.toLowerCase().split(" ").join("-")}`;
   readCheckbox.id = `toggle-${book.title.toLowerCase().split(" ").join("-")}`;
 
-  if ((book.read = "yes")) {
+  console.log(book.read);
+  if (book.read === "yes") {
     readCheckbox.checked = true;
     readCheckbox.classList.add("read");
     numberOfReadBooks.textContent = Number(numberOfReadBooks.textContent) + 1;
