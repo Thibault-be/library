@@ -138,11 +138,12 @@ function createCard(book) {
 function yourNumbers(bookReadStatus) {
   numberOfBooks.textContent = books.length;
 
-  bookReadStatus === "read"
-    ? (numberOfReadBooks.textContent =
-        Number(numberOfReadBooks.textContent) - 1)
-    : (numberOfUnreadBooks.textContent =
-        Number(numberOfUnreadBooks.textContent) - 1);
+  const elementsWithReadClass = document.querySelectorAll(".read");
+  const elementsWithUnreadClass = document.querySelectorAll(".unread");
+
+  numberOfReadBooks.textContent = elementsWithReadClass.length;
+
+  numberOfUnreadBooks.textContent = elementsWithUnreadClass.length;
 }
 
 function removeFromBooksArray(bookTitle) {
@@ -163,5 +164,7 @@ function changeReadStatus(readCheckbox) {
   readCheckbox.classList[0] === "read"
     ? readCheckbox.classList.replace("read", "unread")
     : readCheckbox.classList.replace("unread", "read");
-  console.log(readCheckbox.classList);
+
+  const bookReadStatus = readCheckbox.classList[0];
+  yourNumbers(bookReadStatus);
 }
