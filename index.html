@@ -21,21 +21,21 @@
           </tr>
           <tr>
             <td class="description number-of-books">Books</td>
-            <td class="digit books-digit">25</td>
+            <td class="digit number-of-books-digit">0</td>
           </tr>
           <tr>
             <td class="description number-of-books-read">Books read</td>
-            <td class="digit books-read-digit">25</td>
+            <td class="digit books-read-digit">0</td>
           </tr>
           <tr>
             <td class="description number-of-books-unread">Books not read</td>
-            <td class="digit books-digit-unread">25</td>
+            <td class="digit books-digit-unread">0</td>
           </tr>
         </table>
       </header>
       <main>
         <div class="main-container">
-          <div class="card read">
+          <!-- <div class="card read">
             <button class="remove">x</button>
             <h3 class="book-title">A Game of Thrones</h3>
             <p class="author">By: George R.R. Martin</p>
@@ -45,7 +45,7 @@
             <p class="published">Published:1 July 1996</p>
             <label for="toggle">Mark as read:</label>
             <input type="checkbox" name="toggle" id="toggle" />
-          </div>
+          </div> -->
         </div>
         <dialog class="modal">
           <form class="add-book-form" method="dialog" action="example.html">
@@ -78,6 +78,13 @@
               id="new-book-genre"
               placeholder="Genre"
               value="Roman"
+            />
+            <label for="new-book-language">Language* </label>
+            <input
+              type="text"
+              id="new-book-language"
+              placeholder="Language"
+              value="en"
             />
             <label for="new-book-publishing-date">Publishing Date*</label>
             <input
