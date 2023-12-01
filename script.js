@@ -46,7 +46,6 @@ formAddBookBtn.addEventListener("click", () => {
     formReadStatus.value
   );
   books.push(newBook);
-  console.log("here", books);
   createCard(newBook);
 });
 
@@ -64,9 +63,9 @@ function createCard(book) {
   const newCard = document.createElement("div");
   newCard.classList.add("card");
 
-  const closeFormBtn = document.createElement("button");
-  closeFormBtn.classList.add("form-close-button");
-  closeFormBtn.textContent = "x";
+  const removeBookBtn = document.createElement("button");
+  removeBookBtn.classList.add("form-close-button");
+  removeBookBtn.textContent = "x";
 
   const newTitle = document.createElement("h3");
   newTitle.classList.add("book-title");
@@ -116,7 +115,7 @@ function createCard(book) {
   }
   numberOfBooks.textContent = books.length;
 
-  newCard.appendChild(closeFormBtn);
+  newCard.appendChild(removeBookBtn);
   newCard.appendChild(newTitle);
   newCard.appendChild(newAuthor);
   newCard.appendChild(newPages);
@@ -127,22 +126,42 @@ function createCard(book) {
   newCard.appendChild(readCheckbox);
   booksContainer.appendChild(newCard);
 
-  closeFormBtn.addEventListener("click", () => {
-    console.log("I've been clicked");
-    const bookCard = closeFormBtn.parentElement;
-    const bookTitle = bookCard.children[1].textContent;
-    console.log("addclick", books);
-    removeFromBooksArray(bookTitle);
-    bookCard.remove();
-    yourNumbers();
+  removeBookBtn.addEventListener("click", () => {
+    removeBookBtnListener(removeBookBtn);
+  });
+
+  readCheckbox.addEventListener("click", () => {
+    changeReadStatus(readCheckbox);
   });
 }
 
-function yourNumbers() {
-  numberOfReadBooks.textContent = books.length;
+function yourNumbers(bookReadStatus) {
+  numberOfBooks.textContent = books.length;
+
+  bookReadStatus === "read"
+    ? (numberOfReadBooks.textContent =
+        Number(numberOfReadBooks.textContent) - 1)
+    : (numberOfUnreadBooks.textContent =
+        Number(numberOfUnreadBooks.textContent) - 1);
 }
 
 function removeFromBooksArray(bookTitle) {
   const index = books.findIndex((book) => book.title === bookTitle);
   books.splice(index, 1);
+}
+
+function removeBookBtnListener(removeBookBtn) {
+  const bookCard = removeBookBtn.parentElement;
+  const bookTitle = bookCard.children[1].textContent;
+  const bookReadStatus = bookCard.children[8].classList[0]; //read or unread
+  removeFromBooksArray(bookTitle);
+  bookCard.remove();
+  yourNumbers(bookReadStatus);
+}
+
+function changeReadStatus(readCheckbox) {
+  readCheckbox.classList[0] === "read"
+    ? readCheckbox.classList.replace("read", "unread")
+    : readCheckbox.classList.replace("unread", "read");
+  console.log(readCheckbox.classList);
 }
