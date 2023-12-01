@@ -46,8 +46,8 @@ formAddBookBtn.addEventListener("click", () => {
     formReadStatus.value
   );
   books.push(newBook);
+  console.log("here", books);
   createCard(newBook);
-  numberOfBooks.textContent = books.length;
 });
 
 function CreateBook(title, author, pages, genre, language, published, read) {
@@ -104,7 +104,6 @@ function createCard(book) {
   readCheckbox.name = `toggle-${book.title.toLowerCase().split(" ").join("-")}`;
   readCheckbox.id = `toggle-${book.title.toLowerCase().split(" ").join("-")}`;
 
-  console.log(book.read);
   if (book.read === "yes") {
     readCheckbox.checked = true;
     readCheckbox.classList.add("read");
@@ -115,6 +114,7 @@ function createCard(book) {
     numberOfUnreadBooks.textContent =
       Number(numberOfUnreadBooks.textContent) + 1;
   }
+  numberOfBooks.textContent = books.length;
 
   newCard.appendChild(closeFormBtn);
   newCard.appendChild(newTitle);
@@ -125,6 +125,24 @@ function createCard(book) {
   newCard.appendChild(newPublished);
   newCard.appendChild(readLabel);
   newCard.appendChild(readCheckbox);
-
   booksContainer.appendChild(newCard);
+
+  closeFormBtn.addEventListener("click", () => {
+    console.log("I've been clicked");
+    const bookCard = closeFormBtn.parentElement;
+    const bookTitle = bookCard.children[1].textContent;
+    console.log("addclick", books);
+    removeFromBooksArray(bookTitle);
+    bookCard.remove();
+    yourNumbers();
+  });
+}
+
+function yourNumbers() {
+  numberOfReadBooks.textContent = books.length;
+}
+
+function removeFromBooksArray(bookTitle) {
+  const index = books.findIndex((book) => book.title === bookTitle);
+  books.splice(index, 1);
 }
