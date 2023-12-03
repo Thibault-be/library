@@ -135,7 +135,7 @@ function createCard(book) {
   });
 }
 
-function yourNumbers(bookReadStatus) {
+function yourNumbers() {
   numberOfBooks.textContent = books.length;
 
   const elementsWithReadClass = document.querySelectorAll(".read");
@@ -157,7 +157,7 @@ function removeBookBtnListener(removeBookBtn) {
   const bookReadStatus = bookCard.children[8].classList[0]; //read or unread
   removeFromBooksArray(bookTitle);
   bookCard.remove();
-  yourNumbers(bookReadStatus);
+  yourNumbers();
 }
 
 function changeReadStatus(readCheckbox) {
@@ -165,6 +165,9 @@ function changeReadStatus(readCheckbox) {
     ? readCheckbox.classList.replace("read", "unread")
     : readCheckbox.classList.replace("unread", "read");
 
-  const bookReadStatus = readCheckbox.classList[0];
-  yourNumbers(bookReadStatus);
+  yourNumbers();
 }
+
+//eerste select nog onselecteerbaar maken
+//values van dialog resetten
+//your numbers parameter weg?
