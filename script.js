@@ -6,6 +6,7 @@ const addBookBtn = document.querySelector(".add-book-button");
 const modal = document.querySelector(".modal");
 const form = document.querySelector(".add-book-form");
 const formAddBookBtn = document.querySelector(".form-add-book-button");
+const formCloseBtn = document.querySelector(".form-close-button");
 const formTitle = document.querySelector("#new-book-title");
 const formAuthor = document.querySelector("#new-book-author");
 const formPages = document.querySelector("#new-book-pages");
@@ -93,7 +94,7 @@ function createCard(book) {
   newCard.classList.add("card");
 
   const removeBookBtn = document.createElement("button");
-  removeBookBtn.classList.add("form-close-button");
+  removeBookBtn.classList.add("remove-book-button");
   removeBookBtn.textContent = "x";
 
   const newTitle = document.createElement("h3");
@@ -239,3 +240,20 @@ function removeRequiredClass() {
     field.remove();
   });
 }
+
+formCloseBtn.addEventListener("click", () => {
+  formTitle.value = "";
+  formAuthor.value = "";
+  formPages.value = "";
+  formGenre.value = "";
+  formLanguage.value = "";
+  formDate.value = "";
+  formReadStatus.value = "Have you read this book already?";
+
+  formTitle.placeholder = "Title";
+  formAuthor.placeholder = "Author";
+  formPages.placeholder = "Number of pages";
+  formGenre.placeholder = "Genre";
+  formLanguage.placeholder = "Language";
+  modal.close();
+});
