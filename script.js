@@ -47,6 +47,14 @@ formAddBookBtn.addEventListener("click", () => {
   );
   books.push(newBook);
   createCard(newBook);
+
+  formTitle.placeholder = "Title";
+  formAuthor.placeholder = "Author";
+  formPages.placeholder = "Number of pages";
+  formGenre.placeholder = "Genre";
+  formLanguage.placeholder = "Language";
+  formDate.placeholder = "Publishing date";
+  formReadStatus.placeholder = "Have you read this book already?";
 });
 
 function CreateBook(title, author, pages, genre, language, published, read) {
