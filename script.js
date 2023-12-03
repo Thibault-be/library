@@ -3,7 +3,8 @@ const numberOfBooks = document.querySelector(".number-of-books-digit");
 const numberOfReadBooks = document.querySelector(".books-read-digit");
 const numberOfUnreadBooks = document.querySelector(".books-digit-unread");
 const addBookBtn = document.querySelector(".add-book-button");
-const addBookForm = document.querySelector(".modal");
+const modal = document.querySelector(".modal");
+const form = document.querySelector(".add-book-form");
 const formAddBookBtn = document.querySelector(".form-add-book-button");
 const formTitle = document.querySelector("#new-book-title");
 const formAuthor = document.querySelector("#new-book-author");
@@ -32,10 +33,23 @@ books.forEach((book) => {
 });
 
 addBookBtn.addEventListener("click", () => {
-  addBookForm.showModal();
+  modal.showModal();
 });
 
-formAddBookBtn.addEventListener("click", () => {
+formAddBookBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  let unfilledRequiredFields = document.querySelectorAll(".required");
+  console.log("1", unfilledRequiredFields);
+  if (unfilledRequiredFields.length != 0) {
+    removeRequiredClass();
+  }
+  requiredFieldsFilled();
+  unfilledRequiredFields = document.querySelectorAll(".required");
+  console.log("2", unfilledRequiredFields);
+  if (unfilledRequiredFields.length != 0) {
+    return;
+  }
+
   const newBook = new CreateBook(
     formTitle.value,
     formAuthor.value,
@@ -48,13 +62,21 @@ formAddBookBtn.addEventListener("click", () => {
   books.push(newBook);
   createCard(newBook);
 
+  formTitle.value = "";
+  formAuthor.value = "";
+  formPages.value = "";
+  formGenre.value = "";
+  formLanguage.value = "";
+  formDate.value = "";
+  formReadStatus.value = "";
+
   formTitle.placeholder = "Title";
   formAuthor.placeholder = "Author";
   formPages.placeholder = "Number of pages";
   formGenre.placeholder = "Genre";
   formLanguage.placeholder = "Language";
-  formDate.placeholder = "Publishing date";
   formReadStatus.placeholder = "Have you read this book already?";
+  modal.close();
 });
 
 function CreateBook(title, author, pages, genre, language, published, read) {
@@ -176,6 +198,48 @@ function changeReadStatus(readCheckbox) {
   yourNumbers();
 }
 
-//eerste select nog onselecteerbaar maken
-//values van dialog resetten
-//your numbers parameter weg?
+function requiredFieldsFilled() {
+  const formRequiredElements = [
+    formTitle,
+    formAuthor,
+    formPages,
+    formGenre,
+    formLanguage,
+    formDate,
+    formReadStatus,
+  ];
+
+  formRequiredElements.forEach((element) => {
+    createIsRequiredMessage(element);
+  });
+}
+
+function createIsRequiredMessage(formElement) {
+  if (formElement.value === "") {
+    const requiredElement = document.createElement("div");
+    if (formElement.type === "date") {
+      requiredElement.textContent = "Date is a required field";
+    } else {
+      requiredElement.textContent = `${formElement.placeholder} is a required field`;
+    }
+    requiredElement.classList.add("required");
+    formElement.after(requiredElement);
+  } else if (formElement.value === "Have you read this book already?") {
+    const requiredElement = document.createElement("div");
+    requiredElement.textContent = "This is a required field";
+    requiredElement.classList.add("required");
+    formElement.after(requiredElement);
+  }
+}
+
+function removeRequiredClass() {
+  const unfilledRequiredFields = document.querySelectorAll(".required");
+
+  let unfilledArray = Array.from(unfilledRequiredFields);
+  unfilledArray.forEach((field) => {
+    console.log(field);
+    field.remove();
+    console.log(field);
+    console.log("removing", unfilledArray);
+  });
+}
