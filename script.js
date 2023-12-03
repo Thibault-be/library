@@ -68,14 +68,13 @@ formAddBookBtn.addEventListener("click", (event) => {
   formGenre.value = "";
   formLanguage.value = "";
   formDate.value = "";
-  formReadStatus.value = "";
+  formReadStatus.value = "Have you read this book already?";
 
   formTitle.placeholder = "Title";
   formAuthor.placeholder = "Author";
   formPages.placeholder = "Number of pages";
   formGenre.placeholder = "Genre";
   formLanguage.placeholder = "Language";
-  formReadStatus.placeholder = "Have you read this book already?";
   modal.close();
 });
 
