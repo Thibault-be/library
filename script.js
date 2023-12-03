@@ -39,13 +39,13 @@ addBookBtn.addEventListener("click", () => {
 formAddBookBtn.addEventListener("click", (event) => {
   event.preventDefault();
   let unfilledRequiredFields = document.querySelectorAll(".required");
-  console.log("1", unfilledRequiredFields);
+
   if (unfilledRequiredFields.length != 0) {
     removeRequiredClass();
   }
   requiredFieldsFilled();
   unfilledRequiredFields = document.querySelectorAll(".required");
-  console.log("2", unfilledRequiredFields);
+
   if (unfilledRequiredFields.length != 0) {
     return;
   }
@@ -236,9 +236,6 @@ function removeRequiredClass() {
 
   let unfilledArray = Array.from(unfilledRequiredFields);
   unfilledArray.forEach((field) => {
-    console.log(field);
     field.remove();
-    console.log(field);
-    console.log("removing", unfilledArray);
   });
 }
