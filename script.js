@@ -126,7 +126,6 @@ function createCard(book) {
     "for",
     `toggle-${book.title.toLowerCase().split(" ").join("-")}`
   );
-  readLabel.textContent = "Mark as read: ";
   readLabel.classList.add("switch");
 
   const readCheckbox = document.createElement("input");

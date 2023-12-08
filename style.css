@@ -5,14 +5,18 @@
 }
 
 body {
-  width: 100vw;
-  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
   text-align: center;
 
   display: flex;
   justify-content: center;
 
   background-color: rgb(23, 19, 19);
+  color: antiquewhite;
+
+  font-family: "Lato", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .container {
@@ -21,8 +25,6 @@ body {
   justify-content: space-between;
   width: 70vw;
   min-height: 100vh;
-
-  border: 2px solid green;
 }
 
 /*****************************
@@ -34,14 +36,13 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 25px 25px 0 25px;
-
-  border: 1px solid red;
+  /* border-bottom: 1px solid salmon; */
+  box-sizing: border-box;
 }
 
 .header-icon {
   height: 50px;
   padding-left: 7vw;
-  border: 1px solid purple;
 }
 
 table {
@@ -50,13 +51,15 @@ table {
 
 tr,
 td {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   padding: 5px;
+  box-sizing: border-box;
 }
 
 th {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   text-align: left;
+  box-sizing: border-box;
 }
 
 .description {
@@ -64,7 +67,6 @@ th {
 }
 
 .title-add-book-wrapper {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,6 +79,13 @@ h1 {
 .add-book {
   width: 30%;
 }
+
+.add-book-button {
+  padding: 10px;
+  color: black;
+  background-color: antiquewhite;
+  border-radius: 15%;
+}
 /*****************************
 END OF HEADER
 ******************************/
@@ -85,7 +94,6 @@ END OF HEADER
 START OF MAIN
 ******************************/
 main {
-  border: 2px solid blue;
   height: 100%;
   padding-top: 20px;
 }
@@ -94,15 +102,13 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 20px;
-
-  border: 2px solid red;
 }
 
 .card {
   display: flex;
   flex-direction: column;
+  border-radius: 4%;
 
-  border: 1px solid darkblue;
   position: relative;
 
   background: rgb(3, 227, 138);
@@ -128,6 +134,12 @@ main {
   transform: scale(1.3) rotate(135deg);
   transition: all 0.3s ease-in-out 0s;
   color: white;
+}
+
+.switch {
+  align-self: flex-end;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
 /****************************
@@ -206,11 +218,11 @@ START OF FOOTER
 footer {
   height: 5vh;
   text-align: center;
-  border: 1px solid black;
+  /* border-top: 1px solid salmon; */
+  box-sizing: border-box;
 }
 
 .footer {
-  border: 1px solid blue;
   padding: 15px;
 }
 /*****************************
@@ -228,10 +240,14 @@ form {
 
 label {
   display: block;
+  width: 25ch;
+  padding-top: 5px;
+  text-align: left;
 }
 
 input {
   display: inline-block;
+  margin: 0 0 5px 0;
 }
 
 form > button {
@@ -241,4 +257,28 @@ form > button {
 .form-close-button {
   position: absolute;
   right: 0;
+}
+
+/***************************
+***********MODAL************
+***************************/
+
+.modal {
+  background-color: rgb(26, 19, 19);
+  color: antiquewhite;
+  font-size: 18px;
+  margin: auto;
+  padding: 50px;
+}
+
+.required {
+  color: red;
+  font-size: 14px;
+  width: 25ch;
+  text-align: left;
+}
+
+.form-title {
+  font-size: 22px;
+  margin-bottom: 5px;
 }
