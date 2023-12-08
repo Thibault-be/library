@@ -95,7 +95,7 @@ function createCard(book) {
 
   const removeBookBtn = document.createElement("button");
   removeBookBtn.classList.add("remove-book-button");
-  removeBookBtn.textContent = "x";
+  removeBookBtn.textContent = "+";
 
   const newTitle = document.createElement("h3");
   newTitle.classList.add("book-title");
@@ -121,24 +121,12 @@ function createCard(book) {
   newPublished.classList.add("published");
   newPublished.textContent = "Published: " + book.published;
 
-  // now:
-  //             <label for="toggle">Mark as read:</label>
-  //             <input type="checkbox" name="toggle" id="toggle" />
-  // to be:
-  //       <label class="switch" for="toggle"
-  //         >Mark as read:
-  //         <input type="checkbox" name="toggle" id="toggle" />
-  //         <span class="slider round"></span>
-  //       </label>
-
   const readLabel = document.createElement("label");
   readLabel.setAttribute(
     "for",
     `toggle-${book.title.toLowerCase().split(" ").join("-")}`
   );
   readLabel.textContent = "Mark as read: ";
-
-  //new
   readLabel.classList.add("switch");
 
   const readCheckbox = document.createElement("input");
@@ -146,21 +134,26 @@ function createCard(book) {
   readCheckbox.name = `toggle-${book.title.toLowerCase().split(" ").join("-")}`;
   readCheckbox.id = `toggle-${book.title.toLowerCase().split(" ").join("-")}`;
 
-  //new
   const sliderSpan = document.createElement("span");
   sliderSpan.classList.add("slider", "round");
 
   readLabel.appendChild(readCheckbox);
-  //new
   readLabel.appendChild(sliderSpan);
 
   if (book.read === "yes") {
+    console.log("book is read");
     readCheckbox.checked = true;
     readCheckbox.classList.add("read");
+
+    //new
+    newCard.classList.add("read");
+    console.log(readCheckbox.classList);
     numberOfReadBooks.textContent = Number(numberOfReadBooks.textContent) + 1;
   } else {
     readCheckbox.checked = false;
     readCheckbox.classList.add("unread");
+    //new
+    newCard.classList.add("read");
     numberOfUnreadBooks.textContent =
       Number(numberOfUnreadBooks.textContent) + 1;
   }
@@ -204,8 +197,13 @@ function removeFromBooksArray(bookTitle) {
 
 function removeBookBtnListener(removeBookBtn) {
   const bookCard = removeBookBtn.parentElement;
+  console.log(bookCard);
   const bookTitle = bookCard.children[1].textContent;
-  const bookReadStatus = bookCard.children[8].classList[0]; //read or unread
+  console.log(bookCard.children);
+  // const bookReadStatus = bookCard.children[8].classList[0]; //read or unread  - old
+  //new
+  //const bookReadStatus = bookCard.classList[0]; //read or unread
+
   removeFromBooksArray(bookTitle);
   bookCard.remove();
   yourNumbers();
@@ -278,3 +276,6 @@ formCloseBtn.addEventListener("click", () => {
   formLanguage.placeholder = "Language";
   modal.close();
 });
+// ************************************
+// book counting werkt niet meer
+// ************************************
