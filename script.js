@@ -121,6 +121,16 @@ function createCard(book) {
   newPublished.classList.add("published");
   newPublished.textContent = "Published: " + book.published;
 
+  // now:
+  //             <label for="toggle">Mark as read:</label>
+  //             <input type="checkbox" name="toggle" id="toggle" />
+  // to be:
+  //       <label class="switch" for="toggle"
+  //         >Mark as read:
+  //         <input type="checkbox" name="toggle" id="toggle" />
+  //         <span class="slider round"></span>
+  //       </label>
+
   const readLabel = document.createElement("label");
   readLabel.setAttribute(
     "for",
@@ -128,10 +138,21 @@ function createCard(book) {
   );
   readLabel.textContent = "Mark as read: ";
 
+  //new
+  readLabel.classList.add("switch");
+
   const readCheckbox = document.createElement("input");
   readCheckbox.type = "checkbox";
   readCheckbox.name = `toggle-${book.title.toLowerCase().split(" ").join("-")}`;
   readCheckbox.id = `toggle-${book.title.toLowerCase().split(" ").join("-")}`;
+
+  //new
+  const sliderSpan = document.createElement("span");
+  sliderSpan.classList.add("slider", "round");
+
+  readLabel.appendChild(readCheckbox);
+  //new
+  readLabel.appendChild(sliderSpan);
 
   if (book.read === "yes") {
     readCheckbox.checked = true;
@@ -153,7 +174,7 @@ function createCard(book) {
   newCard.appendChild(newLanguage);
   newCard.appendChild(newPublished);
   newCard.appendChild(readLabel);
-  newCard.appendChild(readCheckbox);
+  // newCard.appendChild(readCheckbox); ***removed***
   booksContainer.appendChild(newCard);
 
   removeBookBtn.addEventListener("click", () => {
