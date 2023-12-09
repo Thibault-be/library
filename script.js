@@ -207,7 +207,6 @@ function changeReadStatus(readCheckbox) {
       "card-read"
     );
   }
-
   yourNumbers();
 }
 

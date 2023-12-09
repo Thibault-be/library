@@ -80,11 +80,20 @@ h1 {
   width: 30%;
 }
 
+.add-book-form {
+  padding: 50px;
+}
+
 .add-book-button {
   padding: 10px;
   color: black;
   background-color: antiquewhite;
   border-radius: 15%;
+}
+
+.add-book-button:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 2px antiquewhite;
 }
 /*****************************
 END OF HEADER
@@ -110,7 +119,9 @@ main {
   border-radius: 4%;
 
   position: relative;
+}
 
+.card-read {
   background: rgb(3, 227, 138);
   background: linear-gradient(
     304deg,
@@ -119,7 +130,17 @@ main {
   );
 }
 
-.remove-book-button {
+.card-unread {
+  background: rgb(227, 3, 3);
+  background: linear-gradient(
+    304deg,
+    rgba(227, 3, 3, 0.8547794117647058) 0%,
+    rgba(31, 21, 23, 1) 100%
+  );
+}
+
+.remove-book-button,
+.form-close-button {
   background-color: transparent;
   color: antiquewhite;
   font-size: 20px;
@@ -129,10 +150,11 @@ main {
   transform: rotate(45deg);
 }
 
-.remove-book-button:hover {
+.remove-book-button:hover,
+.form-close-button:hover {
   cursor: pointer;
-  transform: scale(1.3) rotate(135deg);
-  transition: all 0.3s ease-in-out 0s;
+  transform: scale(1.8) rotate(225deg);
+  transition: all 0.2s ease-in-out 0s;
   color: white;
 }
 
@@ -256,7 +278,15 @@ form > button {
 
 .form-close-button {
   position: absolute;
-  right: 0;
+  right: 9px;
+  top: 5px;
+}
+
+.form-add-book-button {
+  margin-top: 30px;
+  padding: 10px;
+  width: 12ch;
+  background-color: antiquewhite;
 }
 
 /***************************
@@ -268,7 +298,11 @@ form > button {
   color: antiquewhite;
   font-size: 18px;
   margin: auto;
-  padding: 50px;
+}
+
+.modal::backdrop {
+  background: antiquewhite;
+  opacity: 0.4;
 }
 
 .required {
@@ -280,5 +314,7 @@ form > button {
 
 .form-title {
   font-size: 22px;
-  margin-bottom: 5px;beyon
+  margin-bottom: 5px;
+  width: 20ch;
+  text-align: left;
 }
