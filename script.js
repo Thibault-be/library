@@ -140,19 +140,14 @@ function createCard(book) {
   readLabel.appendChild(sliderSpan);
 
   if (book.read === "yes") {
-    console.log("book is read");
     readCheckbox.checked = true;
     readCheckbox.classList.add("read");
-
-    //new
-    newCard.classList.add("read");
-    console.log(readCheckbox.classList);
+    newCard.classList.add("card-read");
     numberOfReadBooks.textContent = Number(numberOfReadBooks.textContent) + 1;
   } else {
     readCheckbox.checked = false;
     readCheckbox.classList.add("unread");
-    //new
-    newCard.classList.add("read");
+    newCard.classList.add("card-unread");
     numberOfUnreadBooks.textContent =
       Number(numberOfUnreadBooks.textContent) + 1;
   }
@@ -166,7 +161,6 @@ function createCard(book) {
   newCard.appendChild(newLanguage);
   newCard.appendChild(newPublished);
   newCard.appendChild(readLabel);
-  // newCard.appendChild(readCheckbox); ***removed***
   booksContainer.appendChild(newCard);
 
   removeBookBtn.addEventListener("click", () => {
@@ -180,12 +174,9 @@ function createCard(book) {
 
 function yourNumbers() {
   numberOfBooks.textContent = books.length;
-
   const elementsWithReadClass = document.querySelectorAll(".read");
   const elementsWithUnreadClass = document.querySelectorAll(".unread");
-
   numberOfReadBooks.textContent = elementsWithReadClass.length;
-
   numberOfUnreadBooks.textContent = elementsWithUnreadClass.length;
 }
 
@@ -196,22 +187,26 @@ function removeFromBooksArray(bookTitle) {
 
 function removeBookBtnListener(removeBookBtn) {
   const bookCard = removeBookBtn.parentElement;
-  console.log(bookCard);
   const bookTitle = bookCard.children[1].textContent;
-  console.log(bookCard.children);
-  // const bookReadStatus = bookCard.children[8].classList[0]; //read or unread  - old
-  //new
-  //const bookReadStatus = bookCard.classList[0]; //read or unread
-
   removeFromBooksArray(bookTitle);
   bookCard.remove();
   yourNumbers();
 }
 
 function changeReadStatus(readCheckbox) {
-  readCheckbox.classList[0] === "read"
-    ? readCheckbox.classList.replace("read", "unread")
-    : readCheckbox.classList.replace("unread", "read");
+  if (readCheckbox.classList[0] === "read") {
+    readCheckbox.classList.replace("read", "unread");
+    readCheckbox.parentElement.parentElement.classList.replace(
+      "card-read",
+      "card-unread"
+    );
+  } else {
+    readCheckbox.classList.replace("unread", "read");
+    readCheckbox.parentElement.parentElement.classList.replace(
+      "card-unread",
+      "card-read"
+    );
+  }
 
   yourNumbers();
 }
@@ -275,6 +270,3 @@ formCloseBtn.addEventListener("click", () => {
   formLanguage.placeholder = "Language";
   modal.close();
 });
-// ************************************
-// book counting werkt niet meer
-// ************************************
